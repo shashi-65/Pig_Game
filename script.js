@@ -14,15 +14,6 @@ const player1El = document.querySelector('.player--1');
 const current0El = document.querySelector('#current--0');
 const current1El = document.querySelector('#current--1');
 
-// score0El.textContent = 0;
-// score1El.textContent = 0;
-// let total = 0;
-// let activePlayer = 0;
-// const scores = [0, 0];
-// let playing = true;
-
-// diceEl.classList.add('hidden');
-
 let scores, total, activePlayer, playing;
 
 const init = function () {
@@ -56,13 +47,10 @@ roll.addEventListener('click', function () {
   if (playing) {
     const diceNumber = Math.trunc(Math.random() * 6) + 1;
     diceEl.classList.remove('hidden');
-
-    //   console.log(diceNumber);
     diceEl.src = 'dice-' + diceNumber + '.png';
     if (diceNumber !== 1) {
       total = total + diceNumber;
       document.getElementById(`current--${activePlayer}`).textContent = total;
-      // current0El.textContent = total;
     } else {
       switchPlayer();
     }
@@ -91,6 +79,4 @@ hold.addEventListener('click', function () {
   }
 });
 
-newGame.addEventListener('click', function () {
-  init();
-});
+newGame.addEventListener('click', init);
